@@ -19,4 +19,29 @@ invCont.buildByClassificationId = async function (req, res, next) {
   })
 }
 
+invCont.buildByInventoryId = async function (req, res, next) {
+  const inv_id = req.params.inv_id
+  const data = await invModel.getInventoryById(inv_id)
+  const view = await utilities.buildVehicleDetailView(data)
+  let nav = await utilities.getNav()
+  const vehicleName = data.inv_make + ' ' + data.inv_model
+  res.render("./inventory/vehicle", {
+    title: vehicleName,
+    nav,
+    view,
+  })
+}
+
+invCont.buildByInventoryId501 = async function (req, res, next) {
+next({status: 501, message: 'Sorry, no id was selected.'});
+
+let nav = await utilities.getNav()
+res.render("errors/error", {
+  title: '501' || 'Server Error',
+  message,
+  nav
+})
+}
+
+
 module.exports = invCont
