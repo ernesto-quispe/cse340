@@ -164,7 +164,48 @@ text-align: center;
 footer{
   padding-left: 10px;
 }
-
+.login-form fieldset{
+   background-color: darkslateblue;
+   color: white;
+   border: 1px solid black;
+   border-radius: 10px;
+   padding: 1rem;
+}
+.login-form label.top input{
+  display: block;
+  font-size: 1rem;
+  border: solid 1px var(--accent-color3);
+  border-radius: 4px;
+  padding: 0.75rem;
+  width: 100%;
+  max-width: 95%;
+}
+.top {
+  display: block;
+  padding-top: 1rem;
+  color: white;
+  font-size: 1.5rem;
+  text-align: left;
+}
+.login-form .submitBtn{
+  padding: 10px;
+  font-size: 1.5rem;
+  margin-top: 10px;
+  border-radius: 15px;
+}
+.login-form div{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.login-form a{
+  color:white;
+  margin-left: 10px;
+}
+.login-form a:visited{
+  color:white;
+}
 @media screen and (min-width: 600px) {
 body{
   background-image: url("/images/site/small_check.jpg");

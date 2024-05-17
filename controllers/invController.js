@@ -15,6 +15,7 @@ invCont.buildByClassificationId = async function (req, res, next) {
   res.render("./inventory/classification", {
     title: className + " vehicles",
     nav,
+    errors: null,
     grid,
   })
 }
@@ -28,6 +29,7 @@ invCont.buildByInventoryId = async function (req, res, next) {
   res.render("./inventory/vehicle", {
     title: vehicleName,
     nav,
+    errors: null,
     view,
   })
 }
@@ -39,7 +41,8 @@ let nav = await utilities.getNav()
 res.render("errors/error", {
   title: '501' || 'Server Error',
   message,
-  nav
+  nav,
+  errors: null,
 })
 }
 

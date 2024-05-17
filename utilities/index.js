@@ -79,6 +79,49 @@ Util.buildClassificationGrid = async function(data){
   `; 
     return view
   }
+  /* **************************************
+* Build the login HTML
+* ************************************ */
+Util.buildLoginView = function(){
+  
+let view = `
+<form class="login-form" id="loginForm" action="/account/login" method="post">
+      <fieldset>
+        <label class="top">Email* <input type="email" name="account_email" placeholder="someone@gmail.com" required id="email"
+            autocomplete="email"></label>
+        <label class="top">Password* <input type="password" name="account_password" required id="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"
+            autocomplete="password"></label>
+            <p>Password must be at least 12 characters, include 1 capital letter, 1 number, and 1 special character</p>              
+        <input type="submit" value="Login" class="submitBtn">
+        <div>
+        <p>No account?</p><a href="/account/registration">Sign-up</a>
+        </div>
+      </fieldset>
+    </form>
+`; 
+  return view
+}
+  /* **************************************
+* Build the registration HTML
+* ************************************ */
+Util.buildRegistrationView = function(){
+  
+  let view = `
+  <form class="login-form" method="post" action="/account/register">
+        <fieldset>
+        <label class="top">First name* <input type="text" name="account_firstname" value="<%= locals.account_firstname %>" required id="firstname"></label>
+        <label class="top">Last name* <input type="text" name="account_lastname" value="<%= locals.account_lastname %>" required id="lastname"></label>              
+          <label class="top">Email* <input type="email" name="account_email" placeholder="someone@gmail.com" value="<%= locals.account_email %>" required id="email"
+              autocomplete="email"></label>
+          <label class="top">Password* <input type="password" name="account_password" required id="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"
+              autocomplete="password"></label>
+          <p>Password must be at least 12 characters, include 1 capital letter, 1 number, and 1 special character</p>    
+          <input type="submit" value="Register" class="submitBtn">
+        </fieldset>
+      </form>
+  `; 
+    return view
+  }
 /* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for 
