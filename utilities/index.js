@@ -89,7 +89,7 @@ let view = `
       <fieldset>
         <label class="top">Email* <input type="email" name="account_email" placeholder="someone@gmail.com" required id="email"
             autocomplete="email"></label>
-        <label class="top">Password* <input type="password" name="account_password" required id="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"
+        <label class="top">Password* <input type="password" name="account_password" required id="password" pattern="^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+{}:<>?]).{12,}$"
             autocomplete="password"></label>
             <p>Password must be at least 12 characters, include 1 capital letter, 1 number, and 1 special character</p>              
         <input type="submit" value="Login" class="submitBtn">

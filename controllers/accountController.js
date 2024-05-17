@@ -23,8 +23,16 @@ async function buildLogin(req, res, next) {
       view,
     })
   }
-  
-  /* ****************************************
+/* ****************************************
+*  Process Registration
+* *************************************** */
+async function loginAccount(req, res) {
+  const { account_email, account_password } = req.body
+  res.status(200).send('login process')
+
+
+}
+/* ****************************************
 *  Process Registration
 * *************************************** */
 async function registerAccount(req, res) {
@@ -74,4 +82,4 @@ async function buildRegister(req, res, next) {
     view,
   })
 }
-  module.exports = { buildLogin, buildRegistration, registerAccount, buildRegister }
+  module.exports = { buildLogin, buildRegistration, registerAccount, buildRegister, loginAccount }
