@@ -5,22 +5,23 @@ const utilities = require("../utilities/")
 * *************************************** */
 async function buildLogin(req, res, next) {
     let nav = await utilities.getNav()
-    const view = utilities.buildLoginView()
+    // let pattern = "^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+{}:<>?])[A-Za-z\d[!@#$%^&*()_+{}:<>?]{12,}$"
+    // const view = utilities.buildLoginView(pattern)
     res.render("account/login", {
       title: "Login",
       nav,
       errors: null,
-      view,
+      // view,
     })
   }
   async function buildRegistration(req, res, next) {
     let nav = await utilities.getNav()
-    const view = utilities.buildRegistrationView()
+    // const view = utilities.buildRegistrationView()
     res.render("account/registration", {
       title: "Register",
       nav,
       errors: null,
-      view,
+      // view,
     })
   }
 /* ****************************************
@@ -51,21 +52,21 @@ async function registerAccount(req, res) {
       "notice",
       `Congratulations, you\'re registered ${account_firstname}. Please log in.`
     )
-    const view = utilities.buildLoginView();
+    // const view = utilities.buildLoginView();
     res.status(201).render("account/login", {
       title: "Login",
       nav,
       errors: null,
-      view,
+      // view,
     })
   } else {
     req.flash("notice", "Sorry, the registration failed.")
-    const view = utilities.buildRegistrationView();
+    // const view = utilities.buildRegistrationView();
     res.status(501).render("account/register", {
       title: "Registration",
       nav,
       errors: null,
-      view,
+      // view,
     })
   }
 }
@@ -74,12 +75,12 @@ async function registerAccount(req, res) {
 * *************************************** */
 async function buildRegister(req, res, next) {
   let nav = await utilities.getNav()
-  const view = utilities.buildRegistrationView();
+  // const view = utilities.buildRegistrationView();
   res.render("account/registration", {
     title: "Register",
     nav,
     errors: null,
-    view,
+    // view,
   })
 }
   module.exports = { buildLogin, buildRegistration, registerAccount, buildRegister, loginAccount }

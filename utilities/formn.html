@@ -4,13 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="../public/css/styles.css">
 </head>
 <body>
-  <form class="login-form" id="loginForm" action="/account/login" method="post">
+  <form class="login-form" id="loginForm" action="" method="get">
     <fieldset>
       <label class="top">Email* <input type="email" name="account_email" placeholder="someone@gmail.com" required id="email"
           autocomplete="email"></label>
-      <label class="top">Password* <input type="password" name="account_password" required id="password" pattern="^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+{}:<>?]).{12,}$"
+      <label class="top">Password* <input type="password" name="account_password" required id="password" pattern="^(?=.*[A-Z])(?=.*\d)(?=.*[!@#\$%\^&\*\(\)_\+\{\}:<>?]).{12,}$"
           autocomplete="password"></label>
           <p>Password must be at least 12 characters, include 1 capital letter, 1 number, and 1 special character</p>              
       <input type="submit" value="Login" class="submitBtn">

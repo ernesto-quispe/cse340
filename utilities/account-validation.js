@@ -63,12 +63,12 @@ validate.checkRegData = async (req, res, next) => {
   errors = validationResult(req);
   if (!errors.isEmpty()) {
     let nav = await utilities.getNav();
-    const view = utilities.buildRegistrationView();
+    // const view = utilities.buildRegistrationView();
     res.render("account/registration", {
       errors,
       title: "Registration",
       nav,
-      view,
+      // view,
       account_firstname,
       account_lastname,
       account_email,
@@ -114,12 +114,12 @@ validate.checkLoginData = async (req, res, next) => {
   errors = validationResult(req);
   if (!errors.isEmpty()) {
     let nav = await utilities.getNav();
-    const view = utilities.buildLoginView();
+    // const view = utilities.buildLoginView();
     res.render("account/login", {
       errors,
       title: "Login",
       nav,
-      view,
+      // view,
       account_email,
       account_password,
     });

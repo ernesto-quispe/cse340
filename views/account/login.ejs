@@ -5,6 +5,7 @@
   <% } else { res.redirect('/') } %>
 
     <%- messages() %>
+
       <% if (errors) { %>
         <ul class="notice">
           <% errors.array().forEach(error=> { %>
@@ -14,4 +15,18 @@
             <% }) %>
         </ul>
         <% } %>
-          <%- view %>
+
+          <form class="login-form" id="loginForm" action="/account/login" method="post">
+            <fieldset>
+              <label class="top">Email* <input type="email" name="account_email" placeholder="someone@gmail.com" value="<%= locals.account_email %>"
+                  required id="email" autocomplete="email"></label>
+              <label class="top">Password* <input type="password" name="account_password" required id="password"
+                pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"
+                  autocomplete="password"></label>
+              <p>Password must be at least 12 characters and include at least: 1 capital letter, 1 lowercase letter, 1 number, and 1 special character</p>
+              <input type="submit" value="Login" class="submitBtn">
+              <div>
+                <p>No account?</p><a href="/account/registration">Sign-up</a>
+              </div>
+            </fieldset>
+          </form>
