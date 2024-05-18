@@ -34,6 +34,37 @@ invCont.buildByInventoryId = async function (req, res, next) {
   })
 }
 
+invCont.buildManagement = async function (req, res, next) {
+  let nav = await utilities.getNav()
+  const title = "Vehicle Management"
+  res.render("./inventory/management", {
+    title: title,
+    nav,
+    errors: null,
+  })
+}
+
+invCont.buildAddClassification = async function (req, res, next) {
+  let nav = await utilities.getNav()
+  const title = "Add New Classification"
+  res.render("./inventory/add-classification", {
+    title: title,
+    nav,
+    errors: null,
+  })
+}
+invCont.buildAddInventory = async function (req, res, next) {
+  let nav = await utilities.getNav()
+  const title = "Add New Vehicle"
+  let classificationList = await utilities.buildClassificationList();
+  res.render("./inventory/add-inventory", {
+    title: title,
+    nav,
+    classificationList,
+    errors: null,
+  })
+}
+
 invCont.buildByInventoryId501 = async function (req, res, next) {
 next({status: 501, message: 'Sorry, no id was selected.'});
 
@@ -45,6 +76,5 @@ res.render("errors/error", {
   errors: null,
 })
 }
-
 
 module.exports = invCont
