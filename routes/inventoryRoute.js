@@ -12,6 +12,15 @@ router.get("/detail/", utilities.handleErrors(invController.buildByInventoryId50
 router.get("/", utilities.handleErrors(invController.buildManagement));
 router.get("/add-classification", utilities.handleErrors(invController.buildAddClassification));
 router.get("/add-inventory", utilities.handleErrors(invController.buildAddInventory));
+router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON));
+router.get("/edit/:inv_id", utilities.handleErrors(invController.editInventoryView));
+router.get("/delete/:inv_id", utilities.handleErrors(invController.deleteInventoryView));
+router.post("/update/",
+inventoryValidate.inventoryRules(),
+inventoryValidate.checkUpdateData, 
+utilities.handleErrors(invController.updateInventory)); 
+router.post("/delete/",
+utilities.handleErrors(invController.deleteInventory)); 
 router.post("/add-classification", 
 inventoryValidate.addClassificationRules(),
 inventoryValidate.checkClassificationData,

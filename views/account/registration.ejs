@@ -19,9 +19,9 @@
   <label class="top">First name* <input type="text" name="account_firstname" value="<%= locals.account_firstname %>" required id="firstname"></label>
   <label class="top">Last name* <input type="text" name="account_lastname" value="<%= locals.account_lastname %>" required id="lastname"></label>              
     <label class="top">Email* <input type="email" name="account_email" placeholder="someone@gmail.com" value="<%= locals.account_email %>" required id="email"
-        autocomplete="email"></label>
+        autocomplete="off"></label>
     <label class="top">Password* <input type="password" name="account_password" required id="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"
-        autocomplete="password"></label>
+        autocomplete="off"></label>
     <p>Password must be at least 12 characters and include at least: 1 capital letter, 1 lowercase letter, 1 number, and 1 special character</p>    
     <input type="submit" value="Register" class="submitBtn">
   </fieldset>

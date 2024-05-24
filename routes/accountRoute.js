@@ -6,6 +6,7 @@ const accountController = require("../controllers/accountController")
 const regValidate = require('../utilities/account-validation')
 router.get("/login", utilities.handleErrors(accountController.buildLogin));
 router.get("/registration", utilities.handleErrors(accountController.buildRegistration));
+router.get("/",utilities.checkLogin, utilities.handleErrors(accountController.buildManagement));
 // Process the registration data
 router.post(
     "/register",
@@ -18,10 +19,8 @@ router.post(
   "/login",
   regValidate.loginRules(),
   regValidate.checkLoginData,
-  (req, res) => {
-    res.status(200).send('login process')
-  }
-  //utilities.handleErrors(accountController.loginAccount)
+  accountController.accountLogin,
+  utilities.handleErrors(accountController.accountLogin)
 )
 
 module.exports = router;
