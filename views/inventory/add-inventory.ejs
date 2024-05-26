@@ -3,7 +3,7 @@
       <%= title %>
     </h1>
     <% } else { res.redirect('/') } %>
-  
+    <div id="add-vehicle-view">
       <%- messages() %>
   
         <% if (errors) { %>
@@ -41,4 +41,4 @@
                 <input type="submit" value="Add Vehicle" class="submitBtn">
               </fieldset>
             </form>
-            
+          </div>

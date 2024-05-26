@@ -10,6 +10,22 @@ async function registerAccount(account_firstname, account_lastname, account_emai
       return error.message
     }
   }
+async function updateUser(account_firstname, account_lastname, account_email, account_id){
+    try {
+      const sql = "UPDATE account SET account_firstname = $1, account_lastname = $2, account_email = $3 WHERE account_id = $4 RETURNING *"
+      return await pool.query(sql, [account_firstname, account_lastname, account_email, account_id])
+    } catch (error) {
+      return error.message
+    }
+  }
+  async function updatePassword(account_password, account_id){
+    try {
+      const sql = "UPDATE account SET account_password = $1 WHERE account_id = $2 RETURNING *"
+      return await pool.query(sql, [account_password, account_id])
+    } catch (error) {
+      return error.message
+    }
+  }
 /* **********************
  *   Check for existing email
  * ********************* */
@@ -35,4 +51,4 @@ async function getAccountByEmail (account_email) {
     return new Error("No matching email found")
   }
 }
-  module.exports = {registerAccount, checkExistingEmail, getAccountByEmail};
+  module.exports = {registerAccount, checkExistingEmail, getAccountByEmail, updateUser, updatePassword};
