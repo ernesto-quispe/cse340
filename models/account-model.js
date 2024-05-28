@@ -51,4 +51,14 @@ async function getAccountByEmail (account_email) {
     return new Error("No matching email found")
   }
 }
-  module.exports = {registerAccount, checkExistingEmail, getAccountByEmail, updateUser, updatePassword};
+async function getAccountById (account_id) {
+  try {
+    const result = await pool.query(
+      'SELECT account_id, account_firstname, account_lastname, account_email, account_type, account_password FROM account WHERE account_email = $1',
+      [account_id])
+    return result.rows[0]
+  } catch (error) {
+    return new Error("No matching email found")
+  }
+}
+  module.exports = {registerAccount, checkExistingEmail, getAccountByEmail, updateUser, updatePassword, getAccountById};
