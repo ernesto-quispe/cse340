@@ -169,15 +169,17 @@ invCont.addVehicle = async function (req, res, next) {
 };
 
 invCont.buildByInventoryId501 = async function (req, res, next) {
+//   let nav = await utilities.getNav();
+//   res.render("errors/error", {
+//     title: "501" || "Server Error",
+//     message,
+//     nav,
+//     errors: null,
+//   }
+// );
   next({ status: 501, message: "Sorry, no id was selected." });
 
-  let nav = await utilities.getNav();
-  res.render("errors/error", {
-    title: "501" || "Server Error",
-    message,
-    nav,
-    errors: null,
-  });
+
 };
 /* ***************************
  *  Return Inventory by Classification As JSON
