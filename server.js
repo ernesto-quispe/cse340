@@ -17,6 +17,7 @@ const expressLayouts = require("express-ejs-layouts")
 const inventoryRoute = require("./routes/inventoryRoute")
 const utilities = require("./utilities")
 const accountRoute = require("./routes/accountRoute")
+const reviewRoute = require("./routes/reviewRoute")
 const bodyParser = require("body-parser")
 /* ***********************
  * Middleware
@@ -35,7 +36,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 // Express Messages Middleware
 app.use(require('connect-flash')())
-app.use(function(req, res, next){
+app.use(function (req, res, next) {
   res.locals.messages = require('express-messages')(req, res)
   next()
 })
@@ -58,10 +59,11 @@ app.get("/", utilities.handleErrors(baseController.buildHome))
 // Inventory routes
 app.use("/inv", utilities.handleErrors(inventoryRoute))
 app.use("/account", utilities.handleErrors(accountRoute))
+app.use("/review", utilities.handleErrors(reviewRoute))
 
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {
-  next({status: 404, message: 'Sorry, we appear to have lost that page.'})
+  next({ status: 404, message: 'Sorry, we appear to have lost that page.' })
 })
 /* ***********************
  * Local Server Information
@@ -76,7 +78,7 @@ const host = process.env.HOST
 app.use(async (err, req, res, next) => {
   let nav = await utilities.getNav()
   console.error(`Error at: "${req.originalUrl}": ${err.message}`)
-  if(err.status == 404){ message = err.message} else if (err.status == 501) { message = err.message} else {message = 'Oh no! There was a crash. Maybe try a different route?'}
+  if (err.status == 404) { message = err.message } else if (err.status == 501) { message = err.message } else { message = 'Oh no! There was a crash. Maybe try a different route?' }
   res.render("errors/error", {
     title: err.status || 'Server Error',
     message,

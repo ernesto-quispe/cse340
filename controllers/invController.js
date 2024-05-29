@@ -31,6 +31,7 @@ invCont.buildByInventoryId = async function (req, res, next) {
     nav,
     errors: null,
     view,
+    inv_id
   });
 };
 

@@ -238,6 +238,43 @@ form textarea{
   display:block;
   width:100%;
 }
+
+#reviewDisplay{
+  border-spacing: 0;
+  margin:auto;
+  background-color: darkslateblue;
+  color:white;
+  border-style:solid;
+  border-color:black;
+  border-width: 2px;
+  padding:10px;
+  width:90%
+}
+#reviewDisplay th{
+  padding:10px;
+}
+#reviewDisplay td{
+  padding:10px;
+  border-bottom: 2px solid black; /* Add bottom border to td */
+  border-right: 2px solid black; /* Add right border to td */
+}
+#reviewDisplay tr:first-child td{
+  border-top: 2px solid black; /* Add top border to first row */
+}
+#reviewDisplay tr td:first-child {
+  border-left: 2px solid black; /* Add left border for first td in each row */
+}
+
+
+.reviewLinks{
+  color: white;
+}
+.reviewLinks:visited{
+  color: white;
+
+}
+
+
 @media screen and (min-width: 600px) {
 body{
   background-image: url("/images/site/small_check.jpg");

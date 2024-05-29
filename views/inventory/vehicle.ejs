@@ -1,10 +1,28 @@
 <% if (title) { %>
 
-    <% } else {
-      res.redirect('/')
-    } %>
-<div id="vehicle-detail-view">
-    <%# messages() %>
+  <% } else { res.redirect('/') } %>
+    <div id="vehicle-detail-view">
+      <%# messages() %>
 
-    <%- view %>
-  </div>
+        <%- view %>
+        <h2>See What Others Are Saying!</h2>
+        <table id="reviewDisplay" data-inv-id="<%- locals.inv_id %>"></table></table>
+        <noscript>JavaScript must be enabled to use this page.</noscript>
+        <h2>Let Us Know What You Think!</h2>
+
+          <% if (locals.loggedin){%>
+            <form class="login-form" action="/review/addReview" method="post">
+              <fieldset>
+                <label class="top">Reviewer <input type="text" name="reviewer" required id="review_name" value="<%- locals.accountData.account_firstname.charAt(0).toLowerCase() + locals.accountData.account_lastname.toLowerCase() %>" readonly>
+                </label>
+                <label class="top"> Review: <textarea name="review_text" id="review_text"></textarea></label>
+                <input type="submit" value="Submit Review" class="submitBtn">
+                <input type="hidden" name="inv_id" value="<%- locals.inv_id%>">
+                <input type="hidden" name="account_id" value="<%- locals.accountData.account_id%>">
+              </fieldset>
+            </form>
+            <%} else {%>
+              <a href="/account/login">Log in to leave a review.</a>
+              <%}%>
+    </div>
+    <script src="../../js/reviewVehicle.js"></script>

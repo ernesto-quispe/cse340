@@ -1,4 +1,6 @@
 const invModel = require("../models/inventory-model")
+const revModel = require("../models/review-model")
+
 const Util = {}
 const jwt = require("jsonwebtoken")
 require("dotenv").config()
@@ -99,6 +101,45 @@ Util.buildClassificationGrid = async function(data){
     classificationList += "</select>"
     return classificationList
   }
+
+  // Reviews:
+
+  // Util.buildReviewVehicle= async function (inv_id) {
+  //   let data = await revModel.getReviewByInvID(inv_id)
+  //   let reviewList = []
+  //   data.rows.forEach((row) => {
+  //     classificationList += '<option value="' + row.classification_id + '"'
+  //     if (
+  //       classification_id != null &&
+  //       row.classification_id == classification_id
+  //     ) {
+  //       classificationList += " selected "
+  //     }
+  //     classificationList += ">" + row.classification_name + "</option>"
+  //   })
+  //   classificationList += "</select>"
+  //   return classificationList
+  // }
+
+  // Util.buildReviewAccount= async function (classification_id = null) {
+  //   let data = await revModel.getReviewByAccountId()
+  //   let reviewList = []
+  //   data.rows.forEach((row) => {
+  //     classificationList += '<option value="' + row.classification_id + '"'
+  //     if (
+  //       classification_id != null &&
+  //       row.classification_id == classification_id
+  //     ) {
+  //       classificationList += " selected "
+  //     }
+  //     classificationList += ">" + row.classification_name + "</option>"
+  //   })
+  //   classificationList += "</select>"
+  //   return classificationList
+  // }
+
+
+
 Util.handleErrors = fn => (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next)
 
 /* ****************************************
