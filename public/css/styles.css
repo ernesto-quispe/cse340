@@ -230,7 +230,7 @@ footer{
   flex-direction: column;
   margin:10px;
 }
-#account-management-view,#update-view,#registration-view, #management-main-view, #edit-inventory-main, #delete-main-view, #vehicle-detail-view, #add-vehicle-view, #add-classification-view{
+#account-management-view,#update-view,#review-edit-main, #review-delete-main, #registration-view, #management-main-view, #edit-inventory-main, #delete-main-view, #vehicle-detail-view, #add-vehicle-view, #add-classification-view{
   grid-column: 1/3;
   margin: 10px;
 }
@@ -239,7 +239,7 @@ form textarea{
   width:100%;
 }
 
-#reviewDisplay{
+#reviewDisplay, #inventoryDisplay{
   border-spacing: 0;
   margin:auto;
   background-color: darkslateblue;
@@ -250,30 +250,48 @@ form textarea{
   padding:10px;
   width:90%
 }
-#reviewDisplay th{
+#reviewDisplay th, #inventoryDisplay th{
   padding:10px;
 }
-#reviewDisplay td{
+#reviewDisplay td, #inventoryDisplay td{
   padding:10px;
   border-bottom: 2px solid black; /* Add bottom border to td */
   border-right: 2px solid black; /* Add right border to td */
 }
-#reviewDisplay tr:first-child td{
+#reviewDisplay tr:first-child td, #inventoryDisplay tr:first-child td{
   border-top: 2px solid black; /* Add top border to first row */
 }
-#reviewDisplay tr td:first-child {
+#reviewDisplay tr td:first-child, #inventoryDisplay tr td:first-child {
   border-left: 2px solid black; /* Add left border for first td in each row */
 }
 
 
-.reviewLinks{
+.reviewLinks, #inventoryDisplay a, .managementLinks{
   color: white;
 }
-.reviewLinks:visited{
+.reviewLinks:visited, #inventoryDisplay a:visited, .managementLinks:visited{
   color: white;
 
 }
+.managementLinks{
+  background-color: darkslateblue;
+  padding:10px;
+  text-decoration: none;
+  min-width:250px;
+  text-align: center;
+  font-size:1.25em;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgb(44, 38, 83);
+  margin-bottom:5px;
+}
+#classificationList {
+  margin:10px;
+  padding:2px;
+  font-size:1em;
+  box-shadow: 2px 2px 5px rgb(44, 38, 83);
+  border-radius: 2px;
 
+}
 
 @media screen and (min-width: 600px) {
 body{
