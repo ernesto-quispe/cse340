@@ -1,0 +1,31 @@
+<% if (title) { %>
+    <h1>
+      <%= title %>
+    </h1>
+    <% } else { res.redirect('/') } %>
+      <div id="review-delete-main">
+        <%- messages() %>
+  
+          <% if (errors) { %>
+            <ul class="notice">
+              <% errors.array().forEach(error=> { %>
+                <li>
+                  <%= error.msg %>
+                </li>
+                <% }) %>
+            </ul>
+            <% } %>
+  
+              <form class="login-form" id="updateForm" action="/review/deleteReview" method="post">
+                <fieldset>
+
+                    <label class="top">Make and Model <input type="text" name="vehicle" readonly id="vehicle"
+                      value="<%= locals.inv_make %> <%= locals.inv_model %>"></label>
+
+                  <label class="top">Review Text <textarea readonly name="review_text" id="review_text"> <%= locals.review_text %> </textarea> </label>
+  <p>Please confirm deletion. Please note that this action cannot be undone.</p>
+                  <input type="submit" value="Delete Review" class="submitBtn">
+                  <input type="hidden" name="review_id" value="<%= locals.review_id %>">
+                </fieldset>
+              </form>
+      </div>

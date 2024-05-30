@@ -33,8 +33,8 @@ function buildReviewTable(data) {
     element.reviewer = element.account_firstname.charAt(0).toLowerCase() + element.account_lastname.toLowerCase()
     dataTable += `<tr><td>${element.inv_make} ${element.inv_model}</td>`
     dataTable += `<td>${element.review_text}</td>`
-    dataTable += `<td><a class='reviewLinks' href="/review/editReview">Modify</a>`
-    dataTable += `<td><a class='reviewLinks' href="/review/deleteReview">Delete</a></tr>`;
+    dataTable += `<td><a class='reviewLinks' href="/review/editReview/${element.review_id}">Modify</a>`
+    dataTable += `<td><a class='reviewLinks' href="/review/deleteReview/${element.review_id}">Delete</a></tr>`;
   })
   dataTable += '</tbody>';
   // Display the contents in the Review Management view

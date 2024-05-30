@@ -82,6 +82,115 @@ revCont.getReviewByAccountId = async function (req, res, next) {
 };
 
 
+revCont.getReviewByReviewId = async function (req, res, next) {
+    const review_id = parseInt(req.params.review_id);
+    try {
+        let results = await revModel.getReviewByReviewId(review_id);
+        if (results) {
+            return res.json(results)
+        } else {
+            results = [];
+            // req.flash("notice", "Sorry, Something went wrong.");
+            return res.json(results)
+        }
+    } catch (error) {
+        console.error(error);
+        req.flash("notice", "Sorry, Something went wrong.");
+        // Redirect to the inventory view for the specified inventory item
+        return
+    }
+};
 
 
+revCont.editReviewView = async function (req, res, next) {
+    const review_id = parseInt(req.params.review_id)
+    let nav = await utilities.getNav()
+    const reviewData = await revModel.getReviewByReviewId(review_id)
+    const reviewName = `${reviewData.inv_make} ${reviewData.inv_model}`
+    res.render("./review/edit-review", {
+        title: "Edit " + reviewName + "Review",
+        nav,
+        errors: null,
+        inv_id: reviewData.inv_id,
+        inv_make: reviewData.inv_make,
+        inv_model: reviewData.inv_model,
+        review_id: reviewData.review_id,
+        review_text: reviewData.review_text,
+        account_id: reviewData.account_id,
+        account_firstname: reviewData.account_firstname,
+        account_lastname: reviewData.account_lastname,
+    })
+}
+
+
+revCont.deleteReviewView = async function (req, res, next) {
+    const review_id = parseInt(req.params.review_id)
+    let nav = await utilities.getNav()
+    const reviewData = await revModel.getReviewByReviewId(review_id)
+    const reviewName = `${reviewData.inv_make} ${reviewData.inv_model}`
+    res.render("./review/delete-review", {
+        title: "Delete " + reviewName + " Review",
+        nav,
+        errors: null,
+        review_id: reviewData.review_id,
+        inv_make: reviewData.inv_make,
+        inv_model: reviewData.inv_model,
+        review_text: reviewData.review_text,
+    })
+}
+
+revCont.editReview = async function (req, res, next) {
+    let nav = await utilities.getNav();
+    const {
+        review_text,
+        review_id
+    } = req.body;
+    try {
+        const updateResult = await revModel.updateReview(review_text,review_id);
+        if (updateResult) {
+            req.flash(
+                "notice",
+                `Congratulations, your review has been updated.`
+            );
+            return accController.buildManagement(req, res, next)
+        } else {
+            req.flash("notice", "Sorry, Something went wrong.");
+            // Redirect to the inventory view for the specified inventory item
+            return accController.buildManagement(req, res, next)
+        }
+    } catch (error) {
+        console.error(error);
+        req.flash("notice", "Sorry, Something went wrong.");
+        return accController.buildManagement(req, res, next)
+
+    }
+};
+
+
+
+revCont.deleteReview = async function (req, res, next) {
+    let nav = await utilities.getNav();
+    const {
+        review_id
+    } = req.body;
+    try {
+        const deleteResult = await revModel.deleteReview(review_id);
+        if (deleteResult) {
+            req.flash(
+                "notice",
+                `Congratulations, your review has been deleted.`
+            );
+            return accController.buildManagement(req, res, next)
+        } else {
+            req.flash("notice", "Sorry, Something went wrong.");
+            // Redirect to the inventory view for the specified inventory item
+            return accController.buildManagement(req, res, next)
+        }
+    } catch (error) {
+        console.error(error);
+        req.flash("notice", "Sorry, Something went wrong.");
+        return accController.buildManagement(req, res, next)
+
+    }
+};
 module.exports = revCont;
